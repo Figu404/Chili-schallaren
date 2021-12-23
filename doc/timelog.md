@@ -29,3 +29,7 @@ Arvid and Filip, 30 minitues, Buying electrical relay.
 ### 2021-12-22
 
 Daniel, Jakob, Arvid and Filip, 15 min, Zoom meeting
+
+### 2021-12-23
+
+Filip, 10 min, Tested the relay.
