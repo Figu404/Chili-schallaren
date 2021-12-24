@@ -1,10 +1,27 @@
 from machine import Pin
 import time
 
-Heatlamp = Pin("P8", mode=Pin.OUT)
+heatlamp = Pin("P23", mode=Pin.OUT)
+button = Pin('P10', mode = Pin.IN)
 
-for i in range(10):
-    Heatlamp.value(1)
-    time.sleep(2)
-    Heatlamp.value(0)
-    time.sleep(2)
+def heatlamp_on(on):
+    heatlamp.value(1 if on else 0)
+    send("heatlamp " + ("on" if on else "off"))
+
+def send(message):
+    print("Skickar sedan ", message, " till användaren?")
+
+
+while True:
+    if button() == 0:
+    # if button is pressed
+        heatlamp_on(True)
+        start = time.time()
+        while True:
+        #for how long does the button get pressed
+            time.sleep(0.1)
+            stopTime = time.time()-start
+            if button() == 1:
+                heatlamp_on(False)
+                break
+        
