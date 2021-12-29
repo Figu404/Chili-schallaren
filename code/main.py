@@ -1,8 +1,10 @@
 # Here every import is being imported
+from json import load
 from machine import Pin
 import machine
 import time
 from lib.internet import Internet
+from lib.memory import Memory
 
 # Here every pin is set
 heatlamp = Pin("P23", mode=Pin.OUT)
@@ -55,8 +57,19 @@ def check():
 
 # This is a function for testing the program
 def test():
-    send("tja")
+    print("Running test:")
+    m = Memory()
+    localMemory = m.local_memory
+    localMemory[8] = "df"
+    print(localMemory[8])
+    m.save()
 
+    m2 = Memory()
+    print(m2.local_memory[8])
+
+
+    
+    print("Test run done.")
 
 # Here we run the code
 test()
