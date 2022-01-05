@@ -36,6 +36,7 @@ def humidity_sensor():
         #send(humidity)
         time.sleep(2)
         power.value(0)
+        time.sleep(2)
 
 
 # A function for controlling the pump
