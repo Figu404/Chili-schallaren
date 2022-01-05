@@ -37,3 +37,7 @@ Filip, 10 min, Tested the relay.
 ### 2021-12-28
 
 Filip, 2 hours, Programed a litle template for the program, and a internet class to connect to the internet.
+
+### 2022-1-5
+
+Jakob, Filip och Arvid, 1 hour, Planed and diskussed the project. And test sensor and test a little bit of the code we have.
