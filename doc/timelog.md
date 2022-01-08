@@ -37,18 +37,22 @@ Filip, 10 min, Tested the relay.
 ### 2021-12-28
 
 Filip, 2 hours, Programed a litle template for the program, and a internet class to connect to the internet.
+Arvid, 45 min, Searching for components
 
-<<<<<<< HEAD
-### 2022-1-5
-
-Jakob, Filip och Arvid, 1 hour, Planed and diskussed the project. And test sensor and test a little bit of the code we have.
-=======
 ### 2021-12-29
 
-Jakob, 1 hour, cloning code - had problems but asked Filip which help solve it in 15 minutes 
+Jakob, 15 min, Zoom meeting
+Jakob, 1 hour, cloning code - had problems but asked Filip which help solve it in 15 minutes
 
 ### 2021-12-30
 
 Jakob, 30 minutes, wrote code for sensor
 
->>>>>>> f17af1011dea284561765735b02d9c4c6ff2c006
+### 2022-1-5
+
+Jakob, Arvid and Filip, 15 min, Zoom meeting
+Jakob, Filip och Arvid, 1 hour, Planed and diskussed the project. And test sensor and test a little bit of the code we have.
+
+### 2022-1-8
+
+Jakob, Filip, Arvid, Daniel, 2 hours, Tested software and hardware and bought a plant
