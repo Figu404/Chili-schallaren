@@ -26,17 +26,17 @@ def heatlamp_on(on):
 
 # A function to check the humidty in the soil
 def humidity_sensor():
-    for i in range(10):
-        def calculate_humidty():
-            return apin().voltage()/3
-        power.value(1)
-        time.sleep(2)
-        humidity = calculate_humidty()
-        print(humidity)
-        #send(humidity)
-        time.sleep(2)
-        power.value(0)
-        time.sleep(2)
+    def calculate_humidty():
+        return apin().voltage()/3
+    power.value(1)
+    time.sleep(2)
+    humidity = calculate_humidty()
+    print(humidity)
+    #send(humidity)
+    time.sleep(2)
+    power.value(0)
+    time.sleep(2)
+    return humidity
 
 
 # A function for controlling the pump
@@ -68,12 +68,19 @@ def test():
     m.save()
 
     m2 = Memory()
-    print(m2.local_memory[8])
-
-
-    
+    print(m2.local_memory[8])  
     print("Test run done.")
 
-# Here we run the code
-humidity_sensor()
 
+def main():
+    m = Memory()
+    i = Internet(internet_name="Rosie", internet_password="gustavvilma")
+    while True:
+        print("ja")
+        data = humidity_sensor()
+        m.local_memory[0].add(data)
+        m.save()
+        i.communicate(str(data))
+
+# Here we run the code
+main()
