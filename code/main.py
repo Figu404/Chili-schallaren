@@ -74,7 +74,7 @@ def main():
     while True:
         print("ja")
         data = humidity_sensor()
-        m.local_memory[0].add(data)
+        m.local_memory[time.time()] = data
         m.save()
         i.communicate(str(data))
 
