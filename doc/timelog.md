@@ -6,7 +6,7 @@
 
 Arvid, Filip, Jakob and Daniel, 1 hour, Writing project plan
 
-### 2021-12-xx
+### 2021-12-14
 
 Arvid, 30 min, Orderd components
 
