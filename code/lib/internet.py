@@ -60,10 +60,7 @@ class Internet:
                     return client.check_msg()
             except OSError as er:
                 print("failed: " + str(er))
-                if not str(er) == "Connection to AP Timeout!":
-                    try:
-                        client.disconnect()
-                    except OSError as err:
-                        print("failed to disconnect: " + err)
+                if not str(er) == "Connection to AP Timeout!" or not str(er) == "23":
+                    client.disconnect()
                 adafruitconnected = False
         
