@@ -55,4 +55,4 @@ Jakob, Filip och Arvid, 1 hour, Planed and diskussed the project. And test senso
 
 ### 2022-1-8
 
-Jakob, Filip, Arvid, Daniel, 2 hours, Tested software and hardware and bought a plant
+Jakob, Filip, Arvid, Daniel, 3 hours, Tested software and hardware and bought a plant
