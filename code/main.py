@@ -45,8 +45,8 @@ def water_pump():
     pump.value(0)
     
 # A function for sending a message
-def send(message):
-    web = Internet()
+def send(message, internet_name=None, internet_password=None):
+    web = Internet(internet_name = internet_name, internet_password=internet_password)
     web.comunicate(message = message)
     print("Skickar sedan ", message, " till användaren?")
 
