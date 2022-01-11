@@ -63,4 +63,4 @@ class Internet:
                 if not str(er) == "Connection to AP Timeout!":
                     client.disconnect()
                 adafruitconnected = False
-        
+        client.disconnect()

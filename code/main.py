@@ -7,16 +7,12 @@ from lib.internet import Internet
 from lib.memory import Memory
 
 # Here every pin is set
+adc = machine.ADC() 
 heatlamp = Pin("P23", mode=Pin.OUT)
 pump  = Pin("P22", mode=Pin.OUT)
 power = Pin("P21", mode=Pin.OUT)
-humidity = Pin("P20", mode=Pin.IN)
+humidity = adc.channel( attn = adc.ATTN_11DB ,pin='P16')
 button = Pin('P10', mode = Pin.IN)
-
-# Created for the humidity sensor
-adc = machine.ADC()             # create an ADC object
-apin = adc.channel( attn = adc.ATTN_11DB ,pin='P16')  # create an analog pin on P16
-
 
 # A function for the controlling the hearlamp. Set on to True for on and set on to false for off
 def heatlamp_on(on):
@@ -27,16 +23,19 @@ def heatlamp_on(on):
 # A function to check the humidty in the soil
 def humidity_sensor():
     def calculate_humidty():
-        return apin().voltage()/3
+        # An algorithm to get a percentage on the humidity instead of the value given by the sensor
+        # The algorithm is gotten from the test values from the different situations (in air/dry soil/wet soil)
+        percent_humidity = 1 - ((humidity() - 1300) / 2700)
+        return percent_humidity
     power.value(1)
     time.sleep(2)
-    humidity = calculate_humidty()
-    print(humidity)
+    humidity_value = calculate_humidty()
+    print(humidity_value)
     #send(humidity)
     time.sleep(2)
     power.value(0)
     time.sleep(2)
-    return humidity
+    return humidity_value
 
 
 # A function for controlling the pump
@@ -74,11 +73,11 @@ def test():
 
 def main():
     m = Memory()
-    i = Internet(internet_name="Rosie", internet_password="gustavvilma")
+    i = Internet(internet_name="NETGEAR39", internet_password="smoothrabbit467")
     while True:
         print("ja")
         data = humidity_sensor()
-        m.local_memory[0].add(data)
+        m.local_memory[time.time()] = data
         m.save()
         i.communicate(str(data))
 
