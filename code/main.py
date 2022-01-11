@@ -23,7 +23,10 @@ def heatlamp_on(on):
 # A function to check the humidty in the soil
 def humidity_sensor():
     def calculate_humidty():
-        return humidity()
+        # An algorithm to get a percentage on the humidity instead of the value given by the sensor
+        # The algorithm is gotten from the test values from the different situations (in air/dry soil/wet soil)
+        percent_humidity = 1 - ((humidity()) / 4000)
+        return percent_humidity
     power.value(1)
     time.sleep(2)
     humidity_value = calculate_humidty()
