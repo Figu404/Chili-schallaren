@@ -24,7 +24,7 @@ def calculate_humidty():
     # An algorithm to get a percentage on the humidity instead of the value given by the sensor
     # The algorithm is gotten from the test values from the different situations (in air/dry soil/wet soil)
     percent_humidity = 1 - ((humidity()) / 4000)
-    percent_humidity = round(2, percent_humidity) * 100
+    percent_humidity = round(percent_humidity * 100)
     return percent_humidity
 
 # A function to check the humidty in the soil
