@@ -1,0 +1,5 @@
+Fem mät värden och ta medelvärdet på dem. Skickar sedan upp det till adafruit och spara på sig själv samtidgt. (En gång var 6 timmar.) 
+
+Om värdet på humidity går över typ 2000 eller 1800 då kör man pumpen i x antal sekunder
+
+Lampan tänds klockan 10 och släks vid 7 på kvällen. Knapp för att stänga av lampan till du sätter på den igen manuelt. 

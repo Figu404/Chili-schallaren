@@ -2,6 +2,7 @@ import machine
 from network import WLAN
 
 from mqtt import MQTTClient
+import pycom
 
 # A class named internet so that it is easy to make new connections to the internet and MQTT servers if we need it.
 class Internet:
@@ -17,9 +18,9 @@ class Internet:
         self.user = user if user is not False else "Figu"
         self.password = password if password is not False else "aio_wwpF34UaWdf3AenaFfum0C4I1B5a"
         self.port = port if port is not False else 1883
-        self.topic = topic if topic is not False else "Figu/feeds/Test"
-        self.internet_name = internet_name if internet_name is not False else "Förlåt"
-        self.internet_password = internet_password if internet_password is not False else "psjm0641"
+        self.topic = topic if topic is not False else "Figu/feeds/humidity"
+        self.internet_name = internet_name if internet_name is not False else "LNU-iot"
+        self.internet_password = internet_password if internet_password is not False else "modermodemet"
         self.outhtype = outhtype if outhtype is not False else WLAN.WPA2 
         self.internet_auth = internet_auth if internet_auth is not False else (self.outhtype, self.internet_password)
         self.internet_timeout = internet_timeout if internet_timeout is not False else 5000
@@ -29,13 +30,14 @@ class Internet:
         print("collected data:", msg)
         return msg
 
-    def comunicate(self, message = False):
+    def communicate(self, message = False):
         # This part is where all can go wrong, It can be stuck here and never end.
         # So maybe we will need to alert the user if it can not connect to the internet?
         # Or maybe just skip it if it have tried for too long. Becuese while it is tryeing
         # it can not check the humidity or turn on the pump or the heatlamp. So we dont
         # want it stuck here for ever trying to connect.
         adafruitconnected = False
+        tries = 0
         while True:
             try:
                 if not self.wlan.isconnected():
@@ -59,8 +61,14 @@ class Internet:
                 else:
                     return client.check_msg()
             except OSError as er:
+                if tries > 10:
+                    print("Gave up on connecting to the internet")
+                    pycom.rgbled(0x7f0000)
+                    break
+                tries += 1
                 print("failed: " + str(er))
                 if not str(er) == "Connection to AP Timeout!":
                     client.disconnect()
                 adafruitconnected = False
-        
+            
+        client.disconnect()

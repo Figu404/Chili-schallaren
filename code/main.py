@@ -1,21 +1,23 @@
 # Here every import is being imported
 from json import load
+from os import truncate
 from machine import Pin
 import machine
 import time
 from lib.internet import Internet
 from lib.memory import Memory
+from lib.functions import *
+import pycom
 
 # Here every pin is set
+adc = machine.ADC() 
 heatlamp = Pin("P23", mode=Pin.OUT)
 pump  = Pin("P22", mode=Pin.OUT)
 power = Pin("P21", mode=Pin.OUT)
-humidity = Pin("P20", mode=Pin.IN)
+humidity = adc.channel( attn = adc.ATTN_11DB ,pin='P16')
 button = Pin('P10', mode = Pin.IN)
-
-# Created for the humidity sensor
-adc = machine.ADC()             # create an ADC object
-apin = adc.channel( attn = adc.ATTN_11DB ,pin='P16')  # create an analog pin on P16
+pycom.heartbeat(False)
+cycle = True
 
 
 # A function for the controlling the hearlamp. Set on to True for on and set on to false for off
@@ -27,13 +29,24 @@ def heatlamp_on(on):
 # A function to check the humidty in the soil
 def humidity_sensor():
     def calculate_humidty():
-        return apin().voltage()/3
+        # An algorithm to get a percentage on the humidity instead of the value given by the sensor
+        # The algorithm is gotten from the test values from the different situations (in air/dry soil/wet soil)
+        percent_humidity = (1 - ((humidity()) / 4000)) * 100
+        return percent_humidity
     power.value(1)
     time.sleep(2)
-    humidity = calculate_humidty()
-    send(humidity)
+
+    sum = 0
+    num = 5
+    for i in range(num):
+        sum += calculate_humidty()
+    humidity_value= (sum/num)
+    print(humidity_value)
+    #send(humidity)
     time.sleep(2)
     power.value(0)
+    time.sleep(2)
+    return humidity_value
 
 
 # A function for controlling the pump
@@ -43,8 +56,8 @@ def water_pump():
     pump.value(0)
     
 # A function for sending a message
-def send(message):
-    web = Internet()
+def send(message, internet_name=None, internet_password=None):
+    web = Internet(internet_name = internet_name, internet_password=internet_password)
     web.comunicate(message = message)
     print("Skickar sedan ", message, " till användaren?")
 
@@ -65,12 +78,42 @@ def test():
     m.save()
 
     m2 = Memory()
-    print(m2.local_memory[8])
-
-
-    
+    print(m2.local_memory[8])  
     print("Test run done.")
 
-# Here we run the code
-test()
 
+def button_event_callback():
+    global t
+    if time.time()*1000- t >= 1000:
+        heatlamp_on(False)
+        cycle = False
+
+def main():
+    realtime = 0
+    m = Memory()
+    i = Internet(internet_name="NETGEAR39", internet_password="smoothrabbit467")
+    while True:
+        if realtime == 19:
+            heatlamp_on(True)
+        if realtime == 10:
+            heatlamp_on(False)
+
+        print("measure humidity")
+        data = humidity_sensor()
+        m.local_memory[time.time()] = data
+        m.save()
+
+        if data > 0.55:
+            water_pump()
+
+        i.communicate(str(data))
+
+
+
+
+# connect button to callback event function.
+button.callback(Pin.IRQ_FALLING, button_event_callback)
+t = time.time()
+
+# Here we run the code
+main()
