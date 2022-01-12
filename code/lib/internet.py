@@ -65,10 +65,9 @@ class Internet:
                     print("Gave up on connecting to the internet")
                     pycom.rgbled(0x7f0000)
                     break
-                tries += 1
+                fails += 1
                 print("failed: " + str(er))
                 if not str(er) == "Connection to AP Timeout!":
                     client.disconnect()
-                adafruitconnected = False
-            
+                adafruitconnected = False      
         client.disconnect()
