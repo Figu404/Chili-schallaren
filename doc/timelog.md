@@ -56,3 +56,13 @@ Jakob, Filip och Arvid, 1 hour, Planed and diskussed the project. And test senso
 ### 2022-1-8
 
 Jakob, Filip, Arvid, Daniel, 3 hours, Tested software and hardware and bought a plant
+
+## 2022-1-10
+
+Jakob, 1 hour, code
+Filip, Arvid, Daniel, 2 hours, fixed the pump
+Filip, 1 hour, sother the pump
+
+## 2022-1-11
+
+Jakob, Daniel, Arvid and Filip, 3,5 hours, Fixed code requirements and build the constrution.
