@@ -17,11 +17,6 @@ humidity = adc.channel(attn=adc.ATTN_11DB, pin='P16')
 button = Pin('P10', mode=Pin.IN)
 pycom.heartbeat(False)
 cycle = True
-settings_menu = True
-t = time.time()
-m = Memory()
-memory = m.local_memory
-
 
 # A function for the controlling the hearlamp. Set on to True for on and set on to false for off
 def heatlamp_on(on):
@@ -42,19 +37,11 @@ def humidity_sensor():
     lst_sum = []
     num = 5
     for i in range(num):
-<<<<<<< HEAD
         time.sleep(2)
         lst_sum.append(calculate_humidty())
     humidity_value= sorted(lst_sum)[2]
     print(humidity_value)
     #send(humidity)
-=======
-        sum += calculate_humidty()
-    humidity_value = (sum/num)
-    print(humidity_value)
-    # send(humidity)
-    time.sleep(2)
->>>>>>> 9d218c4ff2e6dba935d277010511df4661243c83
     power.value(0)
     time.sleep(2)
     return humidity_value
