@@ -2,6 +2,7 @@ import machine
 from network import WLAN
 
 from mqtt import MQTTClient
+import pycom
 
 # A class named internet so that it is easy to make new connections to the internet and MQTT servers if we need it.
 class Internet:
@@ -36,6 +37,7 @@ class Internet:
         # it can not check the humidity or turn on the pump or the heatlamp. So we dont
         # want it stuck here for ever trying to connect.
         adafruitconnected = False
+        tries = 0
         while True:
             try:
                 if not self.wlan.isconnected():
@@ -59,8 +61,14 @@ class Internet:
                 else:
                     return client.check_msg()
             except OSError as er:
+                if tries > 10:
+                    print("Gave up on connecting to the internet")
+                    pycom.rgbled(0x7f0000)
+                    break
+                tries += 1
                 print("failed: " + str(er))
                 if not str(er) == "Connection to AP Timeout!":
                     client.disconnect()
                 adafruitconnected = False
+            
         client.disconnect()
