@@ -6,22 +6,22 @@ import machine
 import time
 from lib.internet import Internet
 from lib.memory import Memory
-from lib.functions import *
 import pycom
 
 # Here every pin is set
-adc = machine.ADC() 
+adc = machine.ADC()
 heatlamp = Pin("P23", mode=Pin.OUT)
-pump  = Pin("P22", mode=Pin.OUT)
+pump = Pin("P22", mode=Pin.OUT)
 power = Pin("P21", mode=Pin.OUT)
-humidity = adc.channel( attn = adc.ATTN_11DB ,pin='P16')
-button = Pin('P10', mode = Pin.IN)
+humidity = adc.channel(attn=adc.ATTN_11DB, pin='P16')
+button = Pin('P10', mode=Pin.IN)
 pycom.heartbeat(False)
 cycle = True
 settings_menu = True
 t = time.time()
 m = Memory()
 memory = m.local_memory
+
 
 # A function for the controlling the hearlamp. Set on to True for on and set on to false for off
 def heatlamp_on(on):
@@ -42,11 +42,19 @@ def humidity_sensor():
     lst_sum = []
     num = 5
     for i in range(num):
+<<<<<<< HEAD
         time.sleep(2)
         lst_sum.append(calculate_humidty())
     humidity_value= sorted(lst_sum)[2]
     print(humidity_value)
     #send(humidity)
+=======
+        sum += calculate_humidty()
+    humidity_value = (sum/num)
+    print(humidity_value)
+    # send(humidity)
+    time.sleep(2)
+>>>>>>> 9d218c4ff2e6dba935d277010511df4661243c83
     power.value(0)
     time.sleep(2)
     return humidity_value
@@ -57,12 +65,14 @@ def water_pump():
     pump.value(1)
     time.sleep(10)
     pump.value(0)
-    
+
+
 # A function for sending a message
 def send(message, internet_name=None, internet_password=None):
-    web = Internet(internet_name = internet_name, internet_password=internet_password)
-    web.comunicate(message = message)
+    web = Internet(internet_name=internet_name, internet_password=internet_password)
+    web.comunicate(message=message)
     print("Skickar sedan ", message, " till användaren?")
+
 
 # A function to check if a message was sent......this does not work beacues the
 # connection is new every time you start it so it does not read new messages.
@@ -70,6 +80,7 @@ def send(message, internet_name=None, internet_password=None):
 def check():
     web = Internet()
     return web.comunicate()
+
 
 # This is a function for testing the program
 def test():
@@ -81,7 +92,7 @@ def test():
     m.save()
 
     m2 = Memory()
-    print(m2.local_memory[8])  
+    print(m2.local_memory[8])
     print("Test run done.")
 
 
@@ -98,7 +109,6 @@ def button_event_callback():
         else:
             heatlamp_on(True)
             cycle = True
-        
         t = time.time()*1000
 
 
@@ -113,7 +123,6 @@ def menu(choices, choice):
         if i == choice:
             print("--->", end="")
         print(e)
-    
     key = input()
     if key == "d":
         if len(choices) <= choice:
@@ -132,6 +141,7 @@ def menu(choices, choice):
 
     else:
         return menu(choices, choice)
+
 
 def main_menu():
     global memory
@@ -156,8 +166,6 @@ def main_menu():
                             print("Error:" + str(er))
                             print("Please write a positive integer")
 
-            
-        
 
 def main():
     global memory
@@ -183,10 +191,7 @@ def main():
             i.communicate(str(data))
 
 
-
-
 # connect button to callback event function.
-
 button.callback(Pin.IRQ_FALLING, button_event_callback)
 
 
