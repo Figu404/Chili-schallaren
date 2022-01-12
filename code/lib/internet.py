@@ -37,7 +37,7 @@ class Internet:
         # it can not check the humidity or turn on the pump or the heatlamp. So we dont
         # want it stuck here for ever trying to connect.
         adafruitconnected = False
-        tries = 0
+        fails = 0
         while True:
             try:
                 if not self.wlan.isconnected():
@@ -61,7 +61,7 @@ class Internet:
                 else:
                     return client.check_msg()
             except OSError as er:
-                if tries > 10:
+                if fails > 10:
                     print("Gave up on connecting to the internet")
                     pycom.rgbled(0x7f0000)
                     break
