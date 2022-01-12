@@ -39,14 +39,14 @@ def humidity_sensor():
     power.value(1)
     time.sleep(2)
 
-    sum = 0
+    lst_sum = []
     num = 5
     for i in range(num):
-        sum += calculate_humidty()
-    humidity_value= (sum/num)
+        time.sleep(2)
+        lst_sum.append(calculate_humidty())
+    humidity_value= sorted(lst_sum)[2]
     print(humidity_value)
     #send(humidity)
-    time.sleep(2)
     power.value(0)
     time.sleep(2)
     return humidity_value
