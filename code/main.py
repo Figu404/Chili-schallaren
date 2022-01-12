@@ -52,7 +52,7 @@ def humidity_sensor():
 # A function for controlling the pump
 def water_pump():
     pump.value(1)
-    time.sleep(2)
+    time.sleep(10)
     pump.value(0)
     
 # A function for sending a message
@@ -84,29 +84,36 @@ def test():
 
 def button_event_callback():
     global t
+    global cycle
     if time.time()*1000- t >= 1000:
-        heatlamp_on(False)
-        cycle = False
+        if cycle:
+            heatlamp_on(False)
+            cycle = False
+        else:
+            heatlamp_on(True)
+            cycle = True
+        
+        t = time.time()*1000
 
 def main():
     realtime = 0
+    time_elapsed = time.time()
     m = Memory()
     i = Internet(internet_name="NETGEAR39", internet_password="smoothrabbit467")
     while True:
-        if realtime == 19:
-            heatlamp_on(True)
-        if realtime == 10:
-            heatlamp_on(False)
-
-        print("measure humidity")
-        data = humidity_sensor()
-        m.local_memory[time.time()] = data
-        m.save()
-
-        if data > 0.55:
-            water_pump()
-
-        i.communicate(str(data))
+        if cycle:
+            if realtime == 19:
+                heatlamp_on(True)
+            if realtime == 10:
+                heatlamp_on(False)
+        if time_elapsed - time.time() > 10800:
+            print("measure humidity")
+            data = humidity_sensor()
+            m.local_memory[time.time()] = data
+            m.save()
+            if data > 0.55:
+                water_pump()
+            i.communicate(str(data))
 
 
 
