@@ -1,12 +1,9 @@
 # Here every import is being imported
-from json import load
-from os import truncate
 from machine import Pin
 import machine
 import time
 from lib.internet import Internet
 from lib.memory import Memory
-from lib.functions import *
 import pycom
 
 # Here every pin is set
@@ -85,7 +82,7 @@ def test():
     print("Test run done.")
 
 
-def button_event_callback():
+def button_event_callback(argument):
     global t
     global cycle
     global settings_menu
@@ -104,7 +101,7 @@ def button_event_callback():
 
 def menu(choices, choice):
     global settings_menu
-    if settings_menu:
+    if not settings_menu:
         return -1
     i = 0
     print("\n" * 12)
@@ -136,25 +133,34 @@ def menu(choices, choice):
 def main_menu():
     global memory
     if settings_menu:
-            choice = menu({"Instruktions", "Settings", "Check Data"},0)
-            if choice == 0:
-                print("\n" * 12)
-                print("Instruktions: ")
-                print("To do stuff you do stuff")
-                input()
+        choice = menu({"Instructions", "Settings", "Check Data"}, 1)
+        if choice == 1:
+            print("\n" * 12)
+            print("Instruktions: ")
+            print("To do stuff you do stuff")
+            input()
+            main_menu()
+        if choice == 2:
+            choice = menu({"Pump on seconds"}, 1)
             if choice == 1:
-                choice = menu({"Pump on seconds"}, 0)
-                if choice == 0:
-                    while True:
-                        try:
-                            number = round(int(input()))
-                            if abs(number) - number == 0:
-                                memory["Pump duration"] = number
-                                break
-                            print("Please write a positive integer")
-                        except OSError as er:
-                            print("Error:" + str(er))
-                            print("Please write a positive integer")
+                while True:
+                    try:
+                        inp = input()
+                        inp.type()
+                        number = int(input())
+                        if abs(number) - number == 0:
+                            memory["Pump duration"] = number
+                            break
+                        print("Please write a positive integer")
+                    except OSError as er:
+                        print("Error:" + str(er))
+                        print("Please write a positive integer")
+            main_menu()
+
+        if choice == 3:
+            print(memory)
+            main_menu()
+        
 
             
         
@@ -163,6 +169,7 @@ def main():
     global memory
     global m
     main_menu()
+    m.save()
 
     realtime = 0
     time_elapsed = time.time()
@@ -191,4 +198,5 @@ button.callback(Pin.IRQ_FALLING, button_event_callback)
 
 
 # Here we run the code
+print("fdsa")
 main()
