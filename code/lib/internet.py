@@ -4,10 +4,9 @@ from network import WLAN
 from mqtt import MQTTClient
 import pycom
 
-
 # A class named internet so that it is easy to make new connections to the internet and MQTT servers if we need it.
 class Internet:
-    def __init__(self, sub_cb=False, internet_name=False, internet_password=False, outhtype=False, internet_timeout=False, internet_auth=False, server=False,  device_id=False, user=False, password=False, port=False, topic=False):
+    def __init__(self, sub_cb = False, internet_name = False, internet_password = False, outhtype = False, internet_timeout = False, internet_auth= False, server = False,  device_id = False, user = False, password = False, port = False, topic = False):
         # All the varibles you need to connect to the internet and the MQTT servers.
         # all of them have a defualt value, but you can change them if you create a new object.
         # Internet(user = "Kalle", "topic" = "Kalle/feeds/Test") Then the user and where the information
@@ -22,7 +21,7 @@ class Internet:
         self.topic = topic if topic is not False else "Figu/feeds/humidity"
         self.internet_name = internet_name if internet_name is not False else "LNU-iot"
         self.internet_password = internet_password if internet_password is not False else "modermodemet"
-        self.outhtype = outhtype if outhtype is not False else WLAN.WPA2
+        self.outhtype = outhtype if outhtype is not False else WLAN.WPA2 
         self.internet_auth = internet_auth if internet_auth is not False else (self.outhtype, self.internet_password)
         self.internet_timeout = internet_timeout if internet_timeout is not False else 5000
 
@@ -31,7 +30,7 @@ class Internet:
         print("collected data:", msg)
         return msg
 
-    def communicate(self, message=False):
+    def communicate(self, message = False):
         # This part is where all can go wrong, It can be stuck here and never end.
         # So maybe we will need to alert the user if it can not connect to the internet?
         # Or maybe just skip it if it have tried for too long. Becuese while it is tryeing
@@ -48,7 +47,7 @@ class Internet:
                         machine.idle()
                     print("Connected to WiFi\n")
                 elif not adafruitconnected:
-                    client = MQTTClient(self.device_id, self.server, user=self.user, password=self.password, port=self.port)
+                    client = MQTTClient(self.device_id, self.server , user = self.user,password = self.password, port = self.port)
                     client.set_callback(self.sub_cb)
                     client.connect()
                     client.subscribe(topic=self.topic)
@@ -66,9 +65,10 @@ class Internet:
                     print("Gave up on connecting to the internet")
                     pycom.rgbled(0x7f0000)
                     break
-                fails += 1
+                tries += 1
                 print("failed: " + str(er))
                 if not str(er) == "Connection to AP Timeout!":
                     client.disconnect()
                 adafruitconnected = False
+            
         client.disconnect()

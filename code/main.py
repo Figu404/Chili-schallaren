@@ -6,17 +6,25 @@ import machine
 import time
 from lib.internet import Internet
 from lib.memory import Memory
+from lib.functions import *
 import pycom
 
 # Here every pin is set
-adc = machine.ADC()
+adc = machine.ADC() 
 heatlamp = Pin("P23", mode=Pin.OUT)
-pump = Pin("P22", mode=Pin.OUT)
+pump  = Pin("P22", mode=Pin.OUT)
 power = Pin("P21", mode=Pin.OUT)
-humidity = adc.channel(attn=adc.ATTN_11DB, pin='P16')
-button = Pin('P10', mode=Pin.IN)
+humidity = adc.channel( attn = adc.ATTN_11DB ,pin='P16')
+button = Pin('P10', mode = Pin.IN)
 pycom.heartbeat(False)
 cycle = True
+<<<<<<< HEAD
+=======
+settings_menu = True
+t = time.time()
+m = Memory()
+memory = m.local_memory
+>>>>>>> 17fe852ce5a3f5857583e00c732d87a13c671293
 
 # A function for the controlling the hearlamp. Set on to True for on and set on to false for off
 def heatlamp_on(on):
@@ -34,7 +42,7 @@ def humidity_sensor():
     power.value(1)
     time.sleep(2)
 
-    lst_sum = []
+    sum = 0
     num = 5
     for i in range(num):
         time.sleep(2)
@@ -52,14 +60,12 @@ def water_pump():
     pump.value(1)
     time.sleep(10)
     pump.value(0)
-
-
+    
 # A function for sending a message
 def send(message, internet_name=None, internet_password=None):
-    web = Internet(internet_name=internet_name, internet_password=internet_password)
-    web.comunicate(message=message)
+    web = Internet(internet_name = internet_name, internet_password=internet_password)
+    web.comunicate(message = message)
     print("Skickar sedan ", message, " till användaren?")
-
 
 # A function to check if a message was sent......this does not work beacues the
 # connection is new every time you start it so it does not read new messages.
@@ -67,7 +73,6 @@ def send(message, internet_name=None, internet_password=None):
 def check():
     web = Internet()
     return web.comunicate()
-
 
 # This is a function for testing the program
 def test():
@@ -79,85 +84,28 @@ def test():
     m.save()
 
     m2 = Memory()
-    print(m2.local_memory[8])
+    print(m2.local_memory[8])  
     print("Test run done.")
 
 
-def button_event_callback():
+def button_event_callback(argument):
     global t
     global cycle
     global settings_menu
     if time.time()*1000 - t >= 1000:
-        if settings_menu:
-            settings_menu = False
         if cycle:
             heatlamp_on(False)
             cycle = False
         else:
             heatlamp_on(True)
             cycle = True
+        
         t = time.time()*1000
-
-
-def menu(choices, choice):
-    global settings_menu
-    if settings_menu:
-        return -1
-    i = 0
-    print("\n" * 12)
-    for e in choices:
-        i += 1
-        if i == choice:
-            print("--->", end="")
-        print(e)
-    key = input()
-    if key == "d":
-        if len(choices) <= choice:
-            return menu(choices, choice)
-        else:
-            return menu(choices, choice+1)
-    if key == "u":
-        if 1 >= choice:
-            return menu(choices, choice)
-        else:
-            return menu(choices, choice-1)
-    if key == "":
-        return choice
-    if key == "stop":
-        return None
-
-    else:
-        return menu(choices, choice)
-
-
-def main_menu():
-    global memory
-    if settings_menu:
-            choice = menu({"Instruktions", "Settings", "Check Data"},0)
-            if choice == 0:
-                print("\n" * 12)
-                print("Instruktions: ")
-                print("To do stuff you do stuff")
-                input()
-            if choice == 1:
-                choice = menu({"Pump on seconds"}, 0)
-                if choice == 0:
-                    while True:
-                        try:
-                            number = round(int(input()))
-                            if abs(number) - number == 0:
-                                memory["Pump duration"] = number
-                                break
-                            print("Please write a positive integer")
-                        except OSError as er:
-                            print("Error:" + str(er))
-                            print("Please write a positive integer")
 
 
 def main():
     global memory
     global m
-    main_menu()
 
     realtime = 0
     time_elapsed = time.time()
@@ -179,6 +127,7 @@ def main():
 
 
 # connect button to callback event function.
+
 button.callback(Pin.IRQ_FALLING, button_event_callback)
 
 
