@@ -30,7 +30,7 @@ def humidity_sensor():
     def calculate_humidty():
         # An algorithm to get a percentage on the humidity instead of the value given by the sensor
         # The algorithm is gotten from the test values from the different situations (in air/dry soil/wet soil)
-        percent_humidity = round((1 - ((humidity()) / 4000)) * 100)
+        percent_humidity = round((1 - ((humidity()) / 4095)) * 100)
         return percent_humidity
     power.value(1)
     time.sleep(2)
@@ -115,7 +115,7 @@ def main():
             data = humidity_sensor()
             memory[time.time()] = data
             m.save()
-            if data < 50:
+            if data < 40:
                 water_pump()
             i.communicate(str(data))
 
