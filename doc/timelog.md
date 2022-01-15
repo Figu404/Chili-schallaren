@@ -82,11 +82,11 @@ Everyone wrote on the report for 1.5 hours, then 1 hour without Filip.
 ### 2022-1-15
 
 Arvid, 45 minutes to an hour on report
-Daniel, Jakob and Arvid spent 3 hours on report.
+Daniel, Jakob and Arvid spent 4 hours on report.
 
 
 ## Total
-Jakob 23 hours and 20 minutes including Jan 15th, with 3 hours counted that day
+Jakob 24 hours and 20 minutes
 Filip 21 hours and 40 minutes
-Arvid 23 hours and 30 minutes including Jan 15th, with 3 hours counted that day
-Daniel 19 hours and 45 minutes including Jan 15th, with 3 hours counted that day
+Arvid 24 hours and 30 minutes
+Daniel 20 hours and 45 minutes
