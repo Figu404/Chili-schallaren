@@ -12,4 +12,4 @@ First you need to change the adafruit inputs in the internet class, so that you 
 
 Secondly, change the internet name and password in the main function to be connecting to your internet.
 
-Third, determine what moisture level your plant should have and how often it should be watered. Right now the code so that the plant will be watered for five seconds if the moisture level is below a certain value every two hours when it takes it's measurement. However a cactus for example, should not be watered even every day, thus the time waiting after last measurement can be increased from two hours. Thus, the three variables timeCycle, moistureLevel and pumpTime in the main file.
+Third, determine what moisture level your plant should have and how often it should be watered. Right now the code is written so that the plant will be watered for five seconds if the moisture level is below a certain value every two hours when it takes it's measurement. However a cactus for example, should not be watered even every day, thus the time waiting after last measurement can be increased from two hours. Thus, the three variables timeCycle, moistureLevel and pumpTime in the main file.
