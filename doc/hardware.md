@@ -2,7 +2,7 @@
 
 ## Components with description of handling them
 
-We have used a [Lopy4]
+We have used a [Lopy4](https://docs.pycom.io/datasheets/development/lopy4/) and the [expansion board 3.1](https://docs.pycom.io/datasheets/expansionboards/expansion3/)
 
 This is the [soil moisture sensor](https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf)
 that we used.
@@ -15,4 +15,4 @@ We used this [lamp](https://www.kjell.com/se/produkter/hem-fritid/tradgard/vaxtl
 
 ## Connectivity chart
 
-[[[link to img of the chart from the slides]]]
+![Circuit board](../img/circuite_board.png)
