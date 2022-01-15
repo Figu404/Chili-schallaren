@@ -31,7 +31,7 @@ The sensor was placed in the soil of a plant, the moisture was tested, then the 
 Success. The first test of the soil yielded a value of 1600 and the second test, after the plant had been watered, the sencor returned a value of 1400.
 
 ## Lamp
-The lamp was connected to a 220v outlet with a relay controlled by the microcontroller connecting and disconnecting the circuit. The relay was engaged and disengaged to see if the lamp was turned on and off.
+The lamp was connected to a 230v outlet with a relay controlled by the microcontroller connecting and disconnecting the circuit. The relay was engaged and disengaged to see if the lamp was turned on and off.
 ###### Result:
 Success.
 
