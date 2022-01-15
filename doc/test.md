@@ -44,7 +44,7 @@ Success. The pump was turned on as intended and the moisture level was uploaded 
 
 Discovery: The sensor gave varying results even though the sensor was not manipulated.
 
-Fix: Testing the soil five times with a five second delay in between and taking the midan out of those tests.
+Fix: Testing the soil five times with a five second delay in between and taking the median out of those tests.
 
 ##### Second test
 This test was run for an entire day at the intended cycling time of two hours.
