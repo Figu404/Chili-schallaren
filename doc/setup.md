@@ -1,6 +1,6 @@
 # Setup
 
-Setup the hardware according to the connectivity chart, add a tube to the pump an put the other end to the plant.
+Setup the hardware according to the [connectivity chart](../img/circuite_board.png), add a tube to the pump an put the other end to the plant.
 
 ## Adafruit
 It's up to you if you use adafruit, since it's not too hard to change to direct the data to be sent elsewhere, but you would need to set up an account on adafruit for free if you go our exact route. When you've done that, you need to create a feed and then record username, the key at the "My Key" page device id, and feed name.
