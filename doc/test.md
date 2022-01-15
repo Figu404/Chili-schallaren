@@ -1,12 +1,12 @@
 ## Pump
 To test the pump two containers were placed beside each other, one full of water the other one empty. The pump placed in the container filled with water with a tube was conceded from the pump leading to the empty container. The pump was turned on for 60 seconds and the volume of water that had been moved was measured.
 
-First test:
+###First test
 The pump is connected to port 23 on the expationbord.
 Result:
 Failed. The pump is not provided with sufficient current to move any water.
 
-Second test:
+###Second test
 The pump is connected to a ….. with is controlled by the LoPy.
 Result:
 Failed. The pump is not provided with sufficient current to move enough water, only 50 ml.
@@ -18,13 +18,13 @@ Success. The pump moved 625 ml which equates to 10.4 ml/s.
 
 ## Soil moisture sensor
 
-First test:
+###First test
 The sensor was first placed in moist soil and tested then moved to dry soil and tested again.
 Result: 
 Success. The sensor returned a value of 1300 when placed in the moist soil and a value of 4095 when placed in the dry soil. 
 This was the expected result. In the dry soil the sensor gave the maximum output value which is reasonably considering the condition of the soil. 
 
-Second test:
+###Second test
 The sensor was placed in the soil of a plant, the moisture was tested, then the plant was watered and then the soil was tested again.
 Result:
 Success. The first test of the soil yielded a value of 1600 and the second test, after the plant had been watered, the sencor returned a value of 1400.
@@ -36,14 +36,14 @@ Success.
 
 ## The watering system
 All components were connected, the network information was inputted, the moisture sensor was placed in the soil of a plant and the pump placed in water with a tube ringing to the plant.
-First test:
+###First test
 This test is run with a much lower cycling time of two seconds to see if the pump was turned on when the sensor is manipulated to give a low enough value.
 Result:
 Success. The pump was turned on as intended and the moisture level was uploaded to adafruit. 
 Discovery: The sensor gave varying results even though the sensor was not manipulated.
 Fix: Testing the soil five times with a five second delay in between and taking the midan out of those tests.
 
-Second test:
+###Second test
 This test was run for an entire day at the intended cycling time of two hours.
 Result:
 Success. The system worked as intended.
