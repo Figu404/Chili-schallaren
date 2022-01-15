@@ -13,12 +13,7 @@ To keep a consistent moisture level in the soil we check the soil every other ho
  
 ### Pycom-Device
 Controlling the project we’re using a [Lopy4-Microcontroller][Lopy4] and a [Expansion board v3.1][expansion board]. To the microcontroller there are two [relays][r] and a [soil moisture sensor][sensor]. One of the relays is connected to a plant lamp and the other one to a pump. Even though the pump is driven by a 3.3v signal the data ports on the LoPy did not supply sufficient electricity to run the pump, thus a relay had to be used.  
- 
-### Components
-This is the  [sensor](https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf) that we used.
-This is the two  [relays](https://www.electrokit.com/uploads/productfile/41015/41015704_-_5V_Relay_Module.pdf) that we used. We used this  
-[lamp](https://www.kjell.com/se/produkter/hem-fritid/tradgard/vaxtlampor/vaxtlampa-led-e27-1200-lm-p64560?gclid=Cj0KCQiAieWOBhCYARIsANcOw0zotIo42_MUFOpcMuNYAMZnTFBfwb3OmhILSr8SXYybIhZ_YeAcE9UaAkHfEALw_wcB&gclsrc=aw.ds)
- 
+
 ### Documents
 - [Timelog](../doc/timelog.md)
 - [Setup](../doc/setup.md)
@@ -37,11 +32,3 @@ The moisture sensor works fine but could be optimized a little bit, because the 
 The lamp works perfectly as a component but it is not utilized as we wanted to because it does not turn on and off automatically at specific times during the day as well as it does not turn off automatically if the water has run out. We got the lamp to work last and after that we did not have much time left to do major additions to the project because finishing touches had to be prioritized to be done in time. Everything else with the lamp is working properly and that we are happy with.
  
 We have a connection to MQTT and Adafruit where we upload data and make a graph from that data which was an important part of the project. We are happy with what we have but we would have liked to expand upon it a little bit more such as to message the user as well as the data in Adafruit but it isn’t that big of a problem, as the data is always available on the same page.
- 
- 
- 
- 
-[expansion board]: https://pycom.io/product/expansion-board-3-0/
-[sensor]: https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf
-[Lopy4]: https://pycom.io/product/lopy4/
-[r]: https://www.electrokit.com/uploads/productfile/41015/41015704_-_5V_Relay_Module.pdf
