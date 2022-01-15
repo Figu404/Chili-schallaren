@@ -86,7 +86,7 @@ Daniel, Jakob and Arvid spent 4 hours on report.
 
 
 ## Total
-Jakob 24 hours and 20 minutes
-Filip 21 hours and 40 minutes
-Arvid 24 hours and 30 minutes
-Daniel 20 hours and 45 minutes
+- Jakob 24 hours and 20 minutes
+- Filip 21 hours and 40 minutes
+- Arvid 24 hours and 30 minutes
+- Daniel 20 hours and 45 minutes
