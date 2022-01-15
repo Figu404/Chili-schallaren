@@ -20,17 +20,16 @@ This is the two [relays](https://www.electrokit.com/uploads/productfile/41015/41
 [lamp](https://www.kjell.com/se/produkter/hem-fritid/tradgard/vaxtlampor/vaxtlampa-led-e27-1200-lm-p64560?gclid=Cj0KCQiAieWOBhCYARIsANcOw0zotIo42_MUFOpcMuNYAMZnTFBfwb3OmhILSr8SXYybIhZ_YeAcE9UaAkHfEALw_wcB&gclsrc=aw.ds)
  
 ### Documents
-[Timelog](../doc/timelog.md)<br>
-[Setup](../doc/setup.md)<br>
-[hardware](../doc/hardware.md)<br>
-[requirements](../doc/requirements.md)<br>
-[test](../doc/test.md)<br>
+- [Timelog](../doc/timelog.md)
+- [Setup](../doc/setup.md)
+- [hardware](../doc/hardware.md)
+- [requirements](../doc/requirements.md)
+- [test](../doc/test.md)
  
  
 ## Results
  
-[data_graph](../img/—-----)
-[
+![Finished project](../img/20220114_091904.jpg)
 In the end we got mostly everything as we wanted, all components are used in a way that we are pretty satisfied with even though we missed a few smaller details that could have been good to have or made some minor things more clear.
  
 The moisture sensor works fine but could be optimized a little bit, because the percentage is a little bit misleading if not understood correctly. It is a value between the highest and lowest values we have gotten from testing the sensor, and not the actual moisture level in the soil but it does not change that much in the code as it still is usable to automatize the watering.
