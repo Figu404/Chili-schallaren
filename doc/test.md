@@ -9,7 +9,7 @@ Failed. The pump is not provided with a sufficient current to move any water thr
 
 ##### Second test
 The pump is connected to a [Low Dropout Voltage Regulator](https://www.digikey.be/htmldatasheets/production/1613325/0/0/1/ka278rxxc-series.html) which is controlled by the LoPy.
-[Block Diagram](../img/CamScanner_01-15-2022_17.14.pdf)
+![Block Diagram](../img/CamScanner_01-15-2022_17.14.pdf)
 ###### Result:
 Failed. The pump is not provided with sufficient current to move enough water, only 50 ml.
 
