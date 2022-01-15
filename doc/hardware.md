@@ -2,7 +2,7 @@
 
 ## Components with description of handling them
 
-This is the [sensor] (https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf) that we used.
+This is the [sensor](https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf) that we used.
 
 This is the two [relays](https://www.electrokit.com/uploads/productfile/41015/41015704_-_5V_Relay_Module.pdf) that we used. 
 
