@@ -1,19 +1,19 @@
 ### Tests
 ## Pump
-To test the pump two containers were placed beside each other, one full of water the other one empty. The pump placed in the container filled with water with a tube was conceded from the pump leading to the empty container. The pump was turned on for 60 seconds and the volume of water that had been moved was measured.
+To test the pump two containers were placed beside each other, one full of water the other one empty. The pump placed in the container filled with water with a tube was connected from the pump leading to the empty container. The pump was turned on for 60 seconds and the volume of water that had been moved was measured.
 
 ##### First test
-The pump is connected to port 23 on the expationbord.
+The pump is connected to port 23 on the expansionbord.
 Result:
-Failed. The pump is not provided with sufficient current to move any water.
+Failed. The pump is not provided with a sufficient current to move any water through the entirety of the tube.
 
 ##### Second test
 The pump is connected to a ….. with is controlled by the LoPy.
 ###### Result:
 Failed. The pump is not provided with sufficient current to move enough water, only 50 ml.
 
-Third test:
-The pump is connected to the 3v3 port on the expationbord with a relay to break and connect the curcent.
+##### Third test:
+The pump is connected to the 3v3 port on the expationbord with a relay to break and connect the current.
 ###### Result: 
 Success. The pump moved 625 ml which equates to 10.4 ml/s.
 
