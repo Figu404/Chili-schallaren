@@ -8,7 +8,7 @@ Result:
 Failed. The pump is not provided with a sufficient current to move any water through the entirety of the tube.
 
 ##### Second test
-The pump is connected to a ….. with is controlled by the LoPy.
+The pump is connected to a Low Dropout Voltage Regulator with is controlled by the LoPy.
 ###### Result:
 Failed. The pump is not provided with sufficient current to move enough water, only 50 ml.
 
