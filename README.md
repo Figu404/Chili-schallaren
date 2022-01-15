@@ -15,7 +15,7 @@ To keep a consistent moisture level in the soil we check the soil every other ho
 Controlling the project we’re using a [Lopy4-Microcontroller][Lopy4] and a [Expansion board v3.1][expansion board]. To the microcontroller there are two [relays][r] and a [soil moisture sensor][sensor]. One of the relays is connected to a plant lamp and the other one to a pump. Even though the pump is driven by a 3.3v signal the data ports on the LoPy did not supply sufficient electricity to run the pump, thus a relay had to be used.  
  
 ### Components
-This is the  [sensor](https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf)that we used.
+This is the  [sensor](https://www.electrokit.com/uploads/productfile/41015/41015738_-_Soil_Moisture_Sensor.pdf) that we used.
 This is the two  [relays](https://www.electrokit.com/uploads/productfile/41015/41015704_-_5V_Relay_Module.pdf) that we used. We used this  
 [lamp](https://www.kjell.com/se/produkter/hem-fritid/tradgard/vaxtlampor/vaxtlampa-led-e27-1200-lm-p64560?gclid=Cj0KCQiAieWOBhCYARIsANcOw0zotIo42_MUFOpcMuNYAMZnTFBfwb3OmhILSr8SXYybIhZ_YeAcE9UaAkHfEALw_wcB&gclsrc=aw.ds)
  
